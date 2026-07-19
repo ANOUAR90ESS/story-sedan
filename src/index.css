@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Georgia", "Times New Roman", serif;
+  --color-amber-accent: #f59e0b;
+  --color-amber-muted: #d97706;
+  --color-ink: #050608;
+  --color-paper: #f3f4f6;
+}
+
+@layer base {
+  body {
+    @apply bg-ink text-paper font-sans;
+    background-image: 
+      radial-gradient(circle at -10% -10%, rgba(184, 125, 43, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 105% 105%, rgba(43, 86, 184, 0.1) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+}
+
+.glass-panel {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10;
+}
+
+.glass-card {
+  @apply bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-3xl;
+}
+
+.amber-shadow {
+  @apply shadow-[0_0_20px_rgba(245,158,11,0.2)];
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

@@ -1,0 +1,76 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Public profile for the history creator",
+      "type": "object",
+      "properties": {
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["createdAt"]
+    },
+    "Idea": {
+      "title": "Video Idea",
+      "description": "A generated history document idea",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "hook": { "type": "string" },
+        "rareAngle": { "type": "string" },
+        "fullScript": { "type": "string" },
+        "visualStyle": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "structure": {
+          "type": "object",
+          "properties": {
+            "hook_narration": { "type": "string" },
+            "act1": { "type": "string" },
+            "crisis": { "type": "string" },
+            "climax": { "type": "string" },
+            "legacy": { "type": "string" }
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "category": { "type": "string" },
+            "duration": { "type": "string" },
+            "style": { "type": "string" },
+            "language": { "type": "string" },
+            "timestamp": { "type": "number" }
+          }
+        },
+        "scenes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "timestamp": { "type": "string" },
+              "durationSeconds": { "type": "number" },
+              "description": { "type": "string" },
+              "narration": { "type": "string" },
+              "visualPrompt": { "type": "string" },
+              "motionType": { "type": "string" },
+              "imageUrl": { "type": "string" }
+            }
+          }
+        }
+      },
+      "required": ["title", "userId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "/ideas/{ideaId}": {
+      "schema": "Idea",
+      "description": "Historical video ideas and productions"
+    }
+  }
+}
